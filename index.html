@@ -10,147 +10,153 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #010204;
-    --card: rgba(10, 14, 22, 0.72);
-    --border: rgba(255, 255, 255, 0.045);
+    --bg: #05070c;
+    --card: rgba(14, 18, 28, 0.75);
+    --border: rgba(255, 255, 255, 0.05);
     --accent: #00f0a0;
-    --text: #f8fafc;
-    --muted: #6b7c93;
+    --text: #f1f5f9;
+    --muted: #7a8ba3;
     --win: #22c55e;
     --loss: #f87171;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: "Inter", system-ui, -apple-system, sans-serif;
-    background: #010204;
+    background: 
+      radial-gradient(ellipse 100% 50% at 50% -10%, rgba(0, 240, 160, 0.04), transparent),
+      #05070c;
     color: var(--text);
-    line-height: 1.45;
+    line-height: 1.5;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 40px 16px 140px; }
-  header { text-align: center; margin-bottom: 32px; }
+  .wrap { max-width: 620px; margin: 0 auto; padding: 36px 16px 140px; }
+  header { text-align: center; margin-bottom: 28px; }
   .logo {
-    font-size: 58px;
+    font-size: 54px;
     font-weight: 800;
-    letter-spacing: -2.8px;
-    background: linear-gradient(135deg, #ffffff 0%, #d1d5db 45%, #00f0a0 100%);
+    letter-spacing: -2.5px;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #00f0a0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .tagline { color: var(--muted); margin-top: 8px; font-size: 13.5px; font-weight: 500; }
+  .tagline { color: var(--muted); margin-top: 6px; font-size: 13.5px; font-weight: 500; letter-spacing: 0.2px; }
   .tabs {
     display: flex;
-    gap: 6px;
-    margin-bottom: 18px;
-    background: rgba(10, 14, 22, 0.6);
-    padding: 5px;
+    gap: 4px;
+    margin-bottom: 16px;
+    background: rgba(14, 18, 28, 0.6);
+    padding: 4px;
     border-radius: 14px;
     border: 1px solid var(--border);
   }
   .tab {
     flex: 1;
     text-align: center;
-    padding: 11px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: 11px;
     font-size: 14px;
     font-weight: 650;
     color: var(--muted);
     cursor: pointer;
+    transition: all 0.15s ease;
   }
   .tab.active {
-    background: rgba(0, 240, 160, 0.1);
+    background: rgba(0, 240, 160, 0.12);
     color: var(--accent);
   }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 22px;
+    padding: 20px;
     margin-bottom: 12px;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
-  h2 { font-size: 16px; margin-bottom: 14px; font-weight: 650; }
+  h2 { font-size: 16px; margin-bottom: 14px; font-weight: 650; letter-spacing: -0.2px; }
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
+    gap: 2px;
     text-align: center;
   }
-  .stat-num { font-size: 26px; font-weight: 750; color: var(--accent); letter-spacing: -0.8px; }
-  .stat-label { font-size: 9.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; font-weight: 600; }
+  .stat-num { font-size: 24px; font-weight: 750; color: var(--accent); letter-spacing: -0.6px; }
+  .stat-label { font-size: 9.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 3px; font-weight: 600; }
   .pick {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 0;
+    padding: 13px 0;
     border-bottom: 1px solid rgba(255,255,255,0.03);
   }
   .pick:last-child { border-bottom: none; }
-  .match { font-weight: 650; font-size: 15px; }
+  .match { font-weight: 650; font-size: 15px; letter-spacing: -0.1px; }
   .meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
   .badge {
     background: rgba(0, 240, 160, 0.08);
     color: var(--accent);
-    padding: 5px 11px;
+    padding: 4px 10px;
     border-radius: 999px;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 650;
-    border: 1px solid rgba(0, 240, 160, 0.1);
+    border: 1px solid rgba(0, 240, 160, 0.12);
   }
-  .locked { position: relative; filter: blur(6px); user-select: none; pointer-events: none; }
+  .locked { position: relative; filter: blur(5px); user-select: none; pointer-events: none; }
   .lock-overlay {
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(1, 2, 4, 0.5);
+    background: rgba(5, 7, 12, 0.55);
     border-radius: 12px;
-    font-size: 13px; font-weight: 650; color: var(--accent);
+    font-size: 12.5px; font-weight: 650; color: var(--accent);
     backdrop-filter: blur(4px);
   }
   .day-card {
-    background: rgba(10, 14, 22, 0.5);
+    background: rgba(14, 18, 28, 0.55);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 16px;
-    margin-bottom: 10px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
   }
   .day-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    font-size: 13px;
+    margin-bottom: 8px;
+    font-size: 12.5px;
     font-weight: 650;
     color: var(--muted);
   }
-  .day-count { font-size: 11px; color: var(--accent); font-weight: 600; }
+  .day-count { font-size: 10.5px; color: var(--accent); font-weight: 600; background: rgba(0,240,160,0.08); padding: 2px 7px; border-radius: 999px; }
   .result-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.025);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
     font-size: 13.5px;
   }
   .result-row:last-child { border-bottom: none; }
   .result-match { font-weight: 550; }
-  .result-score { color: var(--muted); font-size: 12.5px; margin-right: 12px; }
+  .result-score { color: var(--muted); font-size: 12.5px; margin-right: 10px; }
   .win { color: var(--win); font-weight: 650; }
   .loss { color: var(--loss); font-weight: 650; }
   .cta {
     display: block; width: 100%;
     background: linear-gradient(135deg, #00f0a0, #00d48a);
-    color: #000; text-align: center; padding: 17px;
-    border-radius: 16px; font-weight: 750; font-size: 16px;
-    text-decoration: none; margin: 12px 0 8px;
-    box-shadow: 0 6px 24px rgba(0, 240, 160, 0.15);
+    color: #000; text-align: center; padding: 16px;
+    border-radius: 16px; font-weight: 750; font-size: 15.5px;
+    text-decoration: none; margin: 10px 0 6px;
+    box-shadow: 0 4px 20px rgba(0, 240, 160, 0.15);
+    transition: transform 0.15s ease;
   }
-  .price { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 14px; }
-  .note { font-size: 12px; color: #4b5a6e; text-align: center; margin-top: 28px; }
-  footer { text-align: center; margin-top: 40px; font-size: 11.5px; color: #334155; }
-  .period { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
-  .free-tag { font-size: 9.5px; color: var(--accent); margin-left: 6px; font-weight: 700; background: rgba(0,240,160,0.1); padding: 1px 6px; border-radius: 4px; }
+  .cta:hover { transform: translateY(-1px); }
+  .price { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+  .note { font-size: 12px; color: #5a6b82; text-align: center; margin-top: 24px; line-height: 1.5; }
+  footer { text-align: center; margin-top: 36px; font-size: 11.5px; color: #3d4a5c; }
+  .period { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  .free-tag { font-size: 9px; color: var(--accent); margin-left: 6px; font-weight: 700; background: rgba(0,240,160,0.1); padding: 1px 5px; border-radius: 4px; }
   .section-note { margin-top: 12px; font-size: 12px; color: var(--muted); }
   .tab-content { display: none; }
   .tab-content.active { display: block; }
@@ -185,7 +191,7 @@
         <div><div class="match">Liverpool vs Arsenal <span class="free-tag">FREE</span></div><div class="meta">Premier League • 16:30</div></div>
         <span class="badge">Over 1.5</span>
       </div>
-      <div style="position: relative; margin-top: 8px;"><div class="pick locked"><div><div class="match">Bayern Munich vs Union Berlin</div><div class="meta">Bundesliga • 15:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div style="position: relative; margin-top: 6px;"><div class="pick locked"><div><div class="match">Bayern Munich vs Union Berlin</div><div class="meta">Bundesliga • 15:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
       <div style="position: relative;"><div class="pick locked"><div><div class="match">Inter vs Napoli</div><div class="meta">Serie A • 20:45</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
       <div style="position: relative;"><div class="pick locked"><div><div class="match">Real Madrid vs Atletico</div><div class="meta">La Liga • 21:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
       <div style="position: relative;"><div class="pick locked"><div><div class="match">Man City vs Chelsea</div><div class="meta">Premier League • 17:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
@@ -250,7 +256,7 @@
       <div class="result-row"><span class="result-match">Dortmund vs Leipzig</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
       <div class="result-row"><span class="result-match">Ajax vs PSV</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
     </div>
-    <p class="section-note" style="text-align:center; margin-top:16px;">Full public graded record. Multiple picks every day.</p>
+    <p class="section-note" style="text-align:center; margin-top:14px;">Full public graded record. Multiple picks every day.</p>
   </div>
 
   <div class="card">
