@@ -173,6 +173,9 @@
   .tab-content { display: none; }
   .tab-content.active { display: block; }
   .algo-note { font-size: 11.5px; color: var(--muted); margin-top: 6px; font-style: italic; }
+  .member-badge { display: none; background: rgba(0,240,160,0.15); color: var(--accent); padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; margin-left: 8px; }
+  .unlocked .locked { filter: none; user-select: auto; pointer-events: auto; }
+  .unlocked .lock-overlay { display: none; }
 </style>
 </head>
 <body>
@@ -180,7 +183,7 @@
   <header>
     <div class="logo">Goals15</div>
     <div class="tagline">Over 1.5 Goals Desk • Public Record + Research</div>
-    <div class="data-line">6 months of data ingested • Running since May 2026</div>
+    <div class="data-line">Live tracking started Nov 1 2026 • Daily graded record builds from here</div>
   </header>
 
   <div class="tabs">
@@ -189,359 +192,50 @@
   </div>
 
   <div class="card">
-    <div class="period">Last 30 days</div>
+    <div class="period">Record starts today</div>
     <div class="stats-grid">
-      <div><div class="stat-num">235-62</div><div class="stat-label">Record</div></div>
-      <div><div class="stat-num">79%</div><div class="stat-label">Hit Rate</div></div>
-      <div><div class="stat-num">+18.4</div><div class="stat-label">Units</div></div>
-      <div><div class="stat-num">+6.2%</div><div class="stat-label">ROI</div></div>
+      <div><div class="stat-num">0-0</div><div class="stat-label">Record</div></div>
+      <div><div class="stat-num">—</div><div class="stat-label">Hit Rate</div></div>
+      <div><div class="stat-num">0</div><div class="stat-label">Units</div></div>
+      <div><div class="stat-num">—</div><div class="stat-label">ROI</div></div>
     </div>
+    <p class="section-note" style="text-align:center; margin-top:8px;">Official graded record begins with today’s picks. Updated every morning by the daily automation.</p>
   </div>
 
   <div id="today" class="tab-content active">
     <div class="card">
-      <h2>Today’s Picks — Nov 1 <span style="font-size:13px; color:var(--muted); font-weight:500;">(1 free)</span></h2>
+      <h2>Today’s Picks — Nov 1 <span style="font-size:13px; color:var(--muted); font-weight:500;">(1 free)</span> <span class="member-badge" id="member-badge">MEMBER</span></h2>
       <div class="pick">
         <div style="flex:1">
           <div class="match">Liverpool vs Arsenal <span class="free-tag">FREE</span></div>
-          <div class="meta">Premier League • 16:30</div>
-          <div class="research"><strong>Algo:</strong> Both sides average 1.8+ goals per game this season. Liverpool 8/10 Over 1.5 at Anfield in last 12; Arsenal concede in 70% of away games vs top-6. xG model flags 78% probability of 2+ goals. Key: high press + early transitions.</div>
+          <div class="meta">Premier League • 16:30 CET • Anfield</div>
+          <div class="research"><strong>Algo:</strong> Liverpool recent games have been high-scoring (4-3 Villarreal, 2-0 Brighton, 2-1 Brentford). Arsenal are 2nd with strong defence (low goals conceded, several clean sheets) but models put Over 1.5 around 63-80% for this fixture. H2H includes a recent 0-0, so the edge is modest. Key: Liverpool’s attack at Anfield vs Arsenal’s compact shape. Probability ~70%.</div>
         </div>
         <span class="badge">Over 1.5</span>
       </div>
-      <div style="position: relative; margin-top: 6px;"><div class="pick locked"><div><div class="match">Bayern Munich vs Union Berlin</div><div class="meta">Bundesliga • 15:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
-      <div style="position: relative;"><div class="pick locked"><div><div class="match">Inter vs Napoli</div><div class="meta">Serie A • 20:45</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
-      <div style="position: relative;"><div class="pick locked"><div><div class="match">Real Madrid vs Atletico</div><div class="meta">La Liga • 21:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
-      <div style="position: relative;"><div class="pick locked"><div><div class="match">Man City vs Chelsea</div><div class="meta">Premier League • 17:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
-      <div style="position: relative;"><div class="pick locked"><div><div class="match">PSG vs Marseille</div><div class="meta">Ligue 1 • 20:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
-      <div style="position: relative;"><div class="pick locked"><div><div class="match">Juventus vs Lazio</div><div class="meta">Serie A • 18:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
-      <div style="position: relative;"><div class="pick locked"><div><div class="match">Barcelona vs Valencia</div><div class="meta">La Liga • 19:15</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
-      <p class="section-note">1 free pick with full research today. Full slate + algo notes unlocked for members.</p>
+      <div class="locked-pick" style="position: relative; margin-top: 6px;"><div class="pick locked"><div><div class="match">Bayern Munich vs Union Berlin</div><div class="meta">Bundesliga • 15:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div class="locked-pick" style="position: relative;"><div class="pick locked"><div><div class="match">Inter vs Napoli</div><div class="meta">Serie A • 20:45</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div class="locked-pick" style="position: relative;"><div class="pick locked"><div><div class="match">Real Madrid vs Atletico</div><div class="meta">La Liga • 21:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div class="locked-pick" style="position: relative;"><div class="pick locked"><div><div class="match">Man City vs Chelsea</div><div class="meta">Premier League • 17:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div class="locked-pick" style="position: relative;"><div class="pick locked"><div><div class="match">PSG vs Marseille</div><div class="meta">Ligue 1 • 20:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div class="locked-pick" style="position: relative;"><div class="pick locked"><div><div class="match">Juventus vs Lazio</div><div class="meta">Serie A • 18:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div class="locked-pick" style="position: relative;"><div class="pick locked"><div><div class="match">Barcelona vs Valencia</div><div class="meta">La Liga • 19:15</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <p class="section-note" id="unlock-note">1 free pick with research today. Full slate unlocked for members after Stripe payment.</p>
     </div>
   </div>
 
   <div id="results" class="tab-content">
-    <div class="day-card">
-      <div class="day-header">Oct 31 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">West Ham vs West Brom</span><span><span class="result-score">1-3</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Kashima vs Cerezo</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Jeonbuk vs Daejeon</span><span><span class="result-score">0-0</span><span class="loss">L</span></span></div>
-      <div class="result-row"><span class="result-match">Cracovia vs Motor</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Al Ittifaq vs Malkiya</span><span><span class="result-score">3-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Sporting vs Benfica</span><span><span class="result-score">2-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Porto vs Braga</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Ajax vs Feyenoord</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
+    <div class="card" style="text-align:center; padding:28px 20px;">
+      <h2>Official Record Starts Today</h2>
+      <p style="font-size:14px; color:#e2e8f0; margin-bottom:10px;">Live graded tracking began on 1 November 2026. The daily automation will grade yesterday’s picks every morning and append them here.</p>
+      <p class="section-note">No fabricated history. First results appear after today’s matches finish and are graded.</p>
     </div>
-    <div class="day-card">
-      <div class="day-header">Oct 30 <span class="day-count">9 picks</span></div>
-      <div class="result-row"><span class="result-match">Real Madrid vs Barcelona</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Man City vs Chelsea</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Lyon</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Dortmund</span><span><span class="result-score">4-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Juventus</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Tottenham</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Liverpool vs Everton</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Milan</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atletico vs Valencia</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 29 <span class="day-count">7 picks</span></div>
-      <div class="result-row"><span class="result-match">Barcelona vs Real Sociedad</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Roma</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-      <div class="result-row"><span class="result-match">Liverpool vs Brighton</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">AC Milan vs Lazio</span><span><span class="result-score">3-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atletico vs Sevilla</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Dortmund vs Leverkusen</span><span><span class="result-score">2-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Marseille vs Monaco</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 28 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">Man United vs Wolves</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Nice</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Torino</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Betis vs Valencia</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Juventus vs Bologna</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Chelsea vs Newcastle</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Frankfurt</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lazio vs Atalanta</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 27 <span class="day-count">6 picks</span></div>
-      <div class="result-row"><span class="result-match">Leverkusen vs Frankfurt</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Marseille vs Lyon</span><span><span class="result-score">2-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atalanta vs Fiorentina</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Sevilla vs Villarreal</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-      <div class="result-row"><span class="result-match">Dortmund vs Leipzig</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Ajax vs PSV</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 26 <span class="day-count">7 picks</span></div>
-      <div class="result-row"><span class="result-match">Tottenham vs Brighton</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Roma vs Inter</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Barcelona vs Girona</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Stuttgart</span><span><span class="result-score">3-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Man City vs Fulham</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Ajax vs PSV</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lyon vs Monaco</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 25 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Crystal Palace</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Bologna</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Madrid vs Villarreal</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Dortmund vs Freiburg</span><span><span class="result-score">4-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Torino</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Lille</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Chelsea vs Wolves</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atletico vs Getafe</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 24 <span class="day-count">6 picks</span></div>
-      <div class="result-row"><span class="result-match">Liverpool vs Brentford</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Juventus vs Lecce</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Barcelona vs Real Betis</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Mainz</span><span><span class="result-score">4-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Marseille vs Nantes</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Man United vs Everton</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 23 <span class="day-count">7 picks</span></div>
-      <div class="result-row"><span class="result-match">Man City vs Bournemouth</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Udinese</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Madrid vs Sevilla</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Dortmund vs Augsburg</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Rennes</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Wolves</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lazio vs Empoli</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 22 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">Liverpool vs Chelsea</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Milan</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Barcelona vs Atletico</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Dortmund</span><span><span class="result-score">4-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Roma</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Marseille</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Man City vs Arsenal</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Juventus vs Fiorentina</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 21 <span class="day-count">6 picks</span></div>
-      <div class="result-row"><span class="result-match">Tottenham vs Man United</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atalanta vs Lazio</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Betis vs Sevilla</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Leverkusen vs Leipzig</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lyon vs Nice</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">West Ham vs Brighton</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 20 <span class="day-count">7 picks</span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Liverpool</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Napoli</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Madrid vs Barcelona</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Leverkusen</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Lyon</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Man City vs Tottenham</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Juventus vs Milan</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 19 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">Chelsea vs Liverpool</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Juventus</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Barcelona vs Sevilla</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Dortmund vs Bayern</span><span><span class="result-score">2-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Lazio</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Marseille vs PSG</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Man City</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atletico vs Real Madrid</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 18 <span class="day-count">6 picks</span></div>
-      <div class="result-row"><span class="result-match">Man United vs Liverpool</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Roma vs Inter</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Valencia vs Barcelona</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Leipzig vs Dortmund</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Nice vs Marseille</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Brighton vs Chelsea</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 17 <span class="day-count">7 picks</span></div>
-      <div class="result-row"><span class="result-match">Tottenham vs Arsenal</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Milan vs Inter</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Sociedad vs Real Madrid</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Frankfurt vs Bayern</span><span><span class="result-score">2-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lille vs PSG</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Wolves vs Man City</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-      <div class="result-row"><span class="result-match">Atalanta vs Napoli</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 16 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">Liverpool vs Man City</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Juventus vs Napoli</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atletico vs Barcelona</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Leverkusen vs Dortmund</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Monaco vs Marseille</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Chelsea vs Arsenal</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Milan</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Madrid vs Atletico</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 15 <span class="day-count">6 picks</span></div>
-      <div class="result-row"><span class="result-match">Man United vs Tottenham</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lazio vs Inter</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Sevilla vs Real Madrid</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Stuttgart vs Bayern</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Monaco</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Brighton vs Liverpool</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 14 <span class="day-count">7 picks</span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Chelsea</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Lazio</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Barcelona vs Real Madrid</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Dortmund vs Leverkusen</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Marseille vs Lyon</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Man City vs Liverpool</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Juventus vs Roma</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 13 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">Tottenham vs Man City</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Juventus</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atletico vs Sevilla</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Leipzig</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Marseille</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Liverpool vs Arsenal</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Milan vs Napoli</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Madrid vs Valencia</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 12 <span class="day-count">6 picks</span></div>
-      <div class="result-row"><span class="result-match">Chelsea vs Tottenham</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Roma vs Milan</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Betis vs Barcelona</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Mainz vs Bayern</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lyon vs PSG</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Man United vs Arsenal</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 11 <span class="day-count">7 picks</span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Tottenham</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Inter</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Madrid vs Atletico</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Dortmund vs Bayern</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Marseille vs Monaco</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Man City vs Chelsea</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Juventus vs Lazio</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 10 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">Liverpool vs Man United</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Milan</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Barcelona vs Valencia</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Dortmund</span><span><span class="result-score">4-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Lyon</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Man City</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Roma</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atletico vs Real Betis</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 9 <span class="day-count">6 picks</span></div>
-      <div class="result-row"><span class="result-match">Tottenham vs Chelsea</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lazio vs Juventus</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Sevilla vs Barcelona</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Leipzig vs Leverkusen</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Nice vs PSG</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Brighton vs Man United</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 8 <span class="day-count">7 picks</span></div>
-      <div class="result-row"><span class="result-match">Man City vs Arsenal</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Milan vs Napoli</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Madrid vs Sevilla</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Frankfurt</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Marseille vs PSG</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Liverpool vs Chelsea</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Roma</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 7 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Liverpool</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Juventus vs Inter</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Barcelona vs Atletico</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Dortmund vs Leipzig</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Marseille</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Man United vs Chelsea</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Milan</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Madrid vs Barcelona</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 6 <span class="day-count">6 picks</span></div>
-      <div class="result-row"><span class="result-match">Tottenham vs Arsenal</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lazio vs Napoli</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Valencia vs Real Madrid</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Leverkusen vs Bayern</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lyon vs Marseille</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Brighton vs Man City</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 5 <span class="day-count">7 picks</span></div>
-      <div class="result-row"><span class="result-match">Man City vs Liverpool</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Napoli</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atletico vs Barcelona</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Dortmund</span><span><span class="result-score">4-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Monaco vs PSG</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Chelsea vs Arsenal</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Juventus vs Milan</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 4 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">Liverpool vs Tottenham</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Juventus</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Madrid vs Atletico</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Dortmund vs Leverkusen</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Monaco</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Man United</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Lazio</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Barcelona vs Sevilla</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 3 <span class="day-count">6 picks</span></div>
-      <div class="result-row"><span class="result-match">Man United vs Man City</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Roma vs Inter</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Valencia vs Barcelona</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Frankfurt vs Bayern</span><span><span class="result-score">2-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Lyon vs Nice</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">West Ham vs Liverpool</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 2 <span class="day-count">7 picks</span></div>
-      <div class="result-row"><span class="result-match">Chelsea vs Man United</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Milan vs Inter</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Real Sociedad vs Real Madrid</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Stuttgart vs Dortmund</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Marseille vs Lyon</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Arsenal vs Tottenham</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Napoli vs Lazio</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <div class="day-card">
-      <div class="day-header">Oct 1 <span class="day-count">8 picks</span></div>
-      <div class="result-row"><span class="result-match">Liverpool vs Arsenal</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Inter vs Napoli</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Barcelona vs Real Madrid</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Bayern vs Leverkusen</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">PSG vs Marseille</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Man City vs Chelsea</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Juventus vs Roma</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
-      <div class="result-row"><span class="result-match">Atletico vs Sevilla</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
-    </div>
-    <p class="section-note" style="text-align:center; margin-top:14px;">Full public graded record covering 30+ days. Members see complete history and research notes.</p>
   </div>
 
   <div class="card">
     <h2>Why Over 1.5 + How the Algo Works</h2>
     <p style="font-size:14px; color:#e2e8f0;">Only loses on 0-0, 1-0 or 0-1. Across top European leagues the baseline is ~76-80%. One focused market, multiple picks per day, public record every morning.</p>
-    <p class="algo-note" style="margin-top:10px;">Model uses recent scoring rates, home/away splits, xG, and league-specific Over 1.5 baselines. Updated daily with fresh data.</p>
+    <p class="algo-note" style="margin-top:10px;">Model uses recent scoring rates, home/away splits, H2H, and league-specific Over 1.5 baselines. Updated daily with fresh data.</p>
   </div>
 
   <div class="price">3-day free trial • then €19 / month • Cancel anytime</div>
@@ -551,14 +245,33 @@
 </div>
 
 <script>
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.tab).classList.add('active');
+(function() {
+  // Tab switching
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
   });
-});
+
+  // Stripe success unlock
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('success') === 'true') {
+    localStorage.setItem('goals15_member', 'true');
+    // Clean URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  if (localStorage.getItem('goals15_member') === 'true') {
+    document.body.classList.add('unlocked');
+    const badge = document.getElementById('member-badge');
+    if (badge) badge.style.display = 'inline-block';
+    const note = document.getElementById('unlock-note');
+    if (note) note.textContent = 'Full slate unlocked. Welcome, member.';
+  }
+})();
 </script>
 </body>
 </html>
