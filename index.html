@@ -30,16 +30,41 @@
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 620px; margin: 0 auto; padding: 36px 16px 140px; }
-  header { text-align: center; margin-bottom: 28px; }
-  .logo {
-    font-size: 54px;
+  .wrap { max-width: 620px; margin: 0 auto; padding: 28px 16px 140px; }
+  header { text-align: center; margin-bottom: 24px; }
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: 4px;
+  }
+  .logo-goals {
+    font-size: 48px;
     font-weight: 800;
-    letter-spacing: -2.5px;
-    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #00f0a0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    letter-spacing: -2px;
+    color: #ffffff;
+    line-height: 1;
+  }
+  .logo-15 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #00f0a0;
+    line-height: 1;
+    position: relative;
+    padding: 0 4px;
+  }
+  .logo-15::before {
+    content: "";
+    position: absolute;
+    inset: -2px -6px;
+    background-image: 
+      linear-gradient(90deg, transparent 49%, rgba(0,240,160,0.15) 50%, transparent 51%),
+      linear-gradient(0deg, transparent 49%, rgba(0,240,160,0.15) 50%, transparent 51%);
+    background-size: 12px 12px;
+    border-radius: 4px;
+    z-index: -1;
   }
   .tagline { color: var(--muted); margin-top: 6px; font-size: 13.5px; font-weight: 500; letter-spacing: 0.2px; }
   .data-line { color: var(--accent); margin-top: 6px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.1px; }
@@ -181,7 +206,9 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="logo">Goals15</div>
+    <div class="logo-wrap">
+      <span class="logo-goals">Goals</span><span class="logo-15">15</span>
+    </div>
     <div class="tagline">Over 1.5 Goals Desk • Public Record + Research</div>
     <div class="data-line">Real graded record from October 2026 • Daily updates from Nov 1</div>
   </header>
