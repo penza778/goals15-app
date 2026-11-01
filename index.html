@@ -10,82 +10,81 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #03050a;
-    --card: rgba(15, 20, 32, 0.72);
-    --border: rgba(255, 255, 255, 0.06);
-    --accent: #00f5a0;
-    --accent-dim: #00c87a;
-    --text: #f1f5f9;
-    --muted: #8b9bb4;
+    --bg: #020306;
+    --card: rgba(12, 16, 26, 0.65);
+    --border: rgba(255, 255, 255, 0.045);
+    --accent: #00f0a0;
+    --text: #f8fafc;
+    --muted: #7d8da3;
     --win: #22c55e;
     --loss: #f87171;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: "Inter", system-ui, -apple-system, sans-serif;
-    background: 
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 245, 160, 0.08), transparent),
-      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0, 200, 122, 0.04), transparent),
+    background:
+      radial-gradient(ellipse 90% 40% at 50% -5%, rgba(0, 240, 160, 0.06), transparent),
+      radial-gradient(ellipse 50% 30% at 80% 100%, rgba(0, 180, 100, 0.03), transparent),
       var(--bg);
     color: var(--text);
-    line-height: 1.55;
+    line-height: 1.5;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 40px 16px 140px; }
-  header { text-align: center; margin-bottom: 40px; }
+  .wrap { max-width: 620px; margin: 0 auto; padding: 48px 16px 160px; }
+  header { text-align: center; margin-bottom: 44px; }
   .logo {
-    font-size: 58px;
+    font-size: 62px;
     font-weight: 800;
-    letter-spacing: -2.5px;
-    background: linear-gradient(135deg, #ffffff 0%, #00f5a0 60%, #00c87a 100%);
+    letter-spacing: -3px;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #00f0a0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .tagline { color: var(--muted); margin-top: 8px; font-size: 14.5px; font-weight: 500; letter-spacing: 0.2px; }
+  .tagline { color: var(--muted); margin-top: 10px; font-size: 14px; font-weight: 500; letter-spacing: 0.3px; }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 24px;
-    margin-bottom: 16px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    border-radius: 24px;
+    padding: 26px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
   }
-  h2 { font-size: 17.5px; margin-bottom: 16px; font-weight: 650; letter-spacing: -0.3px; }
+  h2 { font-size: 16.5px; margin-bottom: 18px; font-weight: 650; letter-spacing: -0.3px; }
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    gap: 6px;
     text-align: center;
   }
-  .stat-num { font-size: 26px; font-weight: 750; color: var(--accent); letter-spacing: -0.8px; }
-  .stat-label { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; font-weight: 600; }
+  .stat-num { font-size: 28px; font-weight: 750; color: var(--accent); letter-spacing: -1px; }
+  .stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.2px; margin-top: 6px; font-weight: 600; }
   .pick {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.035);
   }
   .pick:last-child { border-bottom: none; }
   .match { font-weight: 650; font-size: 15.5px; letter-spacing: -0.2px; }
-  .meta { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+  .meta { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
   .badge {
-    background: rgba(0, 245, 160, 0.1);
+    background: rgba(0, 240, 160, 0.08);
     color: var(--accent);
-    padding: 5px 12px;
+    padding: 6px 13px;
     border-radius: 999px;
     font-size: 11px;
     font-weight: 650;
-    letter-spacing: 0.4px;
-    border: 1px solid rgba(0, 245, 160, 0.15);
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(0, 240, 160, 0.12);
   }
   .locked {
     position: relative;
-    filter: blur(6px);
+    filter: blur(7px);
     user-select: none;
     pointer-events: none;
   }
@@ -95,42 +94,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(3, 5, 10, 0.65);
-    border-radius: 14px;
+    background: rgba(2, 3, 6, 0.55);
+    border-radius: 16px;
     font-size: 13.5px;
     font-weight: 650;
     color: var(--accent);
     z-index: 2;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
   }
   .results-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-  .results-table th { text-align: left; color: var(--muted); font-weight: 600; padding: 8px 2px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 11.5px; letter-spacing: 0.5px; text-transform: uppercase; }
-  .results-table td { padding: 10px 2px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+  .results-table th { text-align: left; color: var(--muted); font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 11px; letter-spacing: 0.6px; text-transform: uppercase; }
+  .results-table td { padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.025); }
   .win { color: var(--win); font-weight: 650; }
   .loss { color: var(--loss); font-weight: 650; }
   .cta {
     display: block;
     width: 100%;
-    background: linear-gradient(135deg, #00f5a0, #00c87a);
+    background: linear-gradient(135deg, #00f0a0, #00d48a);
     color: #000;
     text-align: center;
-    padding: 18px;
-    border-radius: 16px;
+    padding: 19px;
+    border-radius: 18px;
     font-weight: 750;
     font-size: 16.5px;
     text-decoration: none;
-    margin: 12px 0 8px;
+    margin: 14px 0 10px;
     letter-spacing: -0.2px;
-    box-shadow: 0 6px 24px rgba(0, 245, 160, 0.22);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 8px 28px rgba(0, 240, 160, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .cta:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0, 245, 160, 0.32); }
-  .price { text-align: center; color: var(--muted); font-size: 13.5px; margin-bottom: 16px; font-weight: 500; }
-  .note { font-size: 12.5px; color: #64748b; text-align: center; margin-top: 28px; line-height: 1.55; }
-  footer { text-align: center; margin-top: 48px; font-size: 12px; color: #475569; }
-  .period { font-size: 12.5px; color: var(--muted); margin-bottom: 12px; font-weight: 500; }
-  .free-tag { font-size: 10px; color: var(--accent); margin-left: 8px; font-weight: 700; letter-spacing: 0.6px; background: rgba(0,245,160,0.12); padding: 2px 6px; border-radius: 4px; }
-  .section-note { margin-top: 14px; font-size: 12.5px; color: var(--muted); }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0, 240, 160, 0.28); }
+  .price { text-align: center; color: var(--muted); font-size: 13.5px; margin-bottom: 18px; font-weight: 500; }
+  .note { font-size: 12.5px; color: #5a6b82; text-align: center; margin-top: 32px; line-height: 1.6; }
+  footer { text-align: center; margin-top: 52px; font-size: 12px; color: #3d4a5c; }
+  .period { font-size: 12.5px; color: var(--muted); margin-bottom: 14px; font-weight: 500; }
+  .free-tag { font-size: 10px; color: var(--accent); margin-left: 8px; font-weight: 700; letter-spacing: 0.7px; background: rgba(0,240,160,0.1); padding: 2px 7px; border-radius: 5px; }
+  .section-note { margin-top: 16px; font-size: 12.5px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -173,7 +172,7 @@
       <span class="badge">Over 1.5</span>
     </div>
 
-    <div style="position: relative; margin-top: 8px;">
+    <div style="position: relative; margin-top: 10px;">
       <div class="pick locked">
         <div>
           <div class="match">Bayern Munich vs Union Berlin</div>
