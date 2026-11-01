@@ -4,165 +4,140 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Goals15 — Over 1.5 Goals Desk</title>
-<meta name="description" content="Goals15: Daily Over 1.5 goals picks with public graded record. Last 30 days hit rate shown. Simple, consistent strategy.">
+<meta name="description" content="Goals15: Daily Over 1.5 goals picks with public graded record.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #020306;
-    --card: rgba(12, 16, 26, 0.65);
-    --border: rgba(255, 255, 255, 0.045);
+    --bg: #010204;
+    --card: rgba(10, 14, 22, 0.7);
+    --border: rgba(255, 255, 255, 0.04);
     --accent: #00f0a0;
     --text: #f8fafc;
-    --muted: #7d8da3;
+    --muted: #6b7c93;
     --win: #22c55e;
     --loss: #f87171;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: "Inter", system-ui, -apple-system, sans-serif;
-    background:
-      radial-gradient(ellipse 90% 40% at 50% -5%, rgba(0, 240, 160, 0.06), transparent),
-      radial-gradient(ellipse 50% 30% at 80% 100%, rgba(0, 180, 100, 0.03), transparent),
-      var(--bg);
+    background: #010204;
     color: var(--text);
-    line-height: 1.5;
+    line-height: 1.45;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 620px; margin: 0 auto; padding: 48px 16px 160px; }
-  header { text-align: center; margin-bottom: 36px; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 40px 16px 140px; }
+  header { text-align: center; margin-bottom: 32px; }
   .logo {
-    font-size: 62px;
+    font-size: 58px;
     font-weight: 800;
-    letter-spacing: -3px;
-    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #00f0a0 100%);
+    letter-spacing: -2.8px;
+    background: linear-gradient(135deg, #ffffff 0%, #d1d5db 45%, #00f0a0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .tagline { color: var(--muted); margin-top: 10px; font-size: 14px; font-weight: 500; letter-spacing: 0.3px; }
+  .tagline { color: var(--muted); margin-top: 8px; font-size: 13.5px; font-weight: 500; }
   .tabs {
     display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-    background: rgba(12, 16, 26, 0.5);
-    padding: 6px;
-    border-radius: 16px;
+    gap: 6px;
+    margin-bottom: 18px;
+    background: rgba(10, 14, 22, 0.6);
+    padding: 5px;
+    border-radius: 14px;
     border: 1px solid var(--border);
   }
   .tab {
     flex: 1;
     text-align: center;
-    padding: 12px;
-    border-radius: 12px;
-    font-size: 14.5px;
+    padding: 11px;
+    border-radius: 10px;
+    font-size: 14px;
     font-weight: 650;
     color: var(--muted);
     cursor: pointer;
-    transition: all 0.2s ease;
   }
   .tab.active {
-    background: rgba(0, 240, 160, 0.12);
+    background: rgba(0, 240, 160, 0.1);
     color: var(--accent);
   }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 26px;
-    margin-bottom: 14px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    padding: 22px;
+    margin-bottom: 12px;
+    backdrop-filter: blur(12px);
   }
-  h2 { font-size: 16.5px; margin-bottom: 18px; font-weight: 650; letter-spacing: -0.3px; }
+  h2 { font-size: 16px; margin-bottom: 14px; font-weight: 650; }
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    gap: 4px;
     text-align: center;
   }
-  .stat-num { font-size: 28px; font-weight: 750; color: var(--accent); letter-spacing: -1px; }
-  .stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.2px; margin-top: 6px; font-weight: 600; }
+  .stat-num { font-size: 26px; font-weight: 750; color: var(--accent); letter-spacing: -0.8px; }
+  .stat-label { font-size: 9.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; font-weight: 600; }
   .pick {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.035);
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
   }
   .pick:last-child { border-bottom: none; }
-  .match { font-weight: 650; font-size: 15.5px; letter-spacing: -0.2px; }
-  .meta { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+  .match { font-weight: 650; font-size: 15px; }
+  .meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
   .badge {
     background: rgba(0, 240, 160, 0.08);
     color: var(--accent);
-    padding: 6px 13px;
+    padding: 5px 11px;
     border-radius: 999px;
     font-size: 11px;
     font-weight: 650;
-    letter-spacing: 0.5px;
-    border: 1px solid rgba(0, 240, 160, 0.12);
+    border: 1px solid rgba(0, 240, 160, 0.1);
   }
-  .locked {
-    position: relative;
-    filter: blur(7px);
-    user-select: none;
-    pointer-events: none;
-  }
+  .locked { position: relative; filter: blur(6px); user-select: none; pointer-events: none; }
   .lock-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(2, 3, 6, 0.55);
-    border-radius: 16px;
-    font-size: 13.5px;
-    font-weight: 650;
-    color: var(--accent);
-    z-index: 2;
-    backdrop-filter: blur(6px);
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(1, 2, 4, 0.5);
+    border-radius: 12px;
+    font-size: 13px; font-weight: 650; color: var(--accent);
+    backdrop-filter: blur(4px);
   }
-  .results-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-  .results-table th { text-align: left; color: var(--muted); font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 11px; letter-spacing: 0.6px; text-transform: uppercase; }
-  .results-table td { padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.025); }
+  .results-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .results-table th { text-align: left; color: var(--muted); font-weight: 600; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 10.5px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .results-table td { padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.02); }
   .win { color: var(--win); font-weight: 650; }
   .loss { color: var(--loss); font-weight: 650; }
   .cta {
-    display: block;
-    width: 100%;
+    display: block; width: 100%;
     background: linear-gradient(135deg, #00f0a0, #00d48a);
-    color: #000;
-    text-align: center;
-    padding: 19px;
-    border-radius: 18px;
-    font-weight: 750;
-    font-size: 16.5px;
-    text-decoration: none;
-    margin: 14px 0 10px;
-    letter-spacing: -0.2px;
-    box-shadow: 0 8px 28px rgba(0, 240, 160, 0.18);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #000; text-align: center; padding: 17px;
+    border-radius: 16px; font-weight: 750; font-size: 16px;
+    text-decoration: none; margin: 12px 0 8px;
+    box-shadow: 0 6px 24px rgba(0, 240, 160, 0.15);
   }
-  .cta:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0, 240, 160, 0.28); }
-  .price { text-align: center; color: var(--muted); font-size: 13.5px; margin-bottom: 18px; font-weight: 500; }
-  .note { font-size: 12.5px; color: #5a6b82; text-align: center; margin-top: 32px; line-height: 1.6; }
-  footer { text-align: center; margin-top: 52px; font-size: 12px; color: #3d4a5c; }
-  .period { font-size: 12.5px; color: var(--muted); margin-bottom: 14px; font-weight: 500; }
-  .free-tag { font-size: 10px; color: var(--accent); margin-left: 8px; font-weight: 700; letter-spacing: 0.7px; background: rgba(0,240,160,0.1); padding: 2px 7px; border-radius: 5px; }
-  .section-note { margin-top: 16px; font-size: 12.5px; color: var(--muted); }
+  .price { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+  .note { font-size: 12px; color: #4b5a6e; text-align: center; margin-top: 28px; }
+  footer { text-align: center; margin-top: 40px; font-size: 11.5px; color: #334155; }
+  .period { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .free-tag { font-size: 9.5px; color: var(--accent); margin-left: 6px; font-weight: 700; background: rgba(0,240,160,0.1); padding: 1px 6px; border-radius: 4px; }
+  .section-note { margin-top: 12px; font-size: 12px; color: var(--muted); }
   .tab-content { display: none; }
   .tab-content.active { display: block; }
+  .day-group { margin-bottom: 18px; }
+  .day-label { font-size: 12px; color: var(--muted); font-weight: 600; margin-bottom: 6px; letter-spacing: 0.3px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="logo">Goals15</div>
-    <div class="tagline">Over 1.5 Goals Desk • Public Record • Daily Picks</div>
+    <div class="tagline">Over 1.5 Goals Desk • Public Record</div>
   </header>
 
   <div class="tabs">
@@ -171,155 +146,109 @@
   </div>
 
   <div class="card">
-    <div class="period">Last 30 days (Oct 2 – Nov 1, 2026)</div>
+    <div class="period">Last 30 days</div>
     <div class="stats-grid">
-      <div>
-        <div class="stat-num">235-62</div>
-        <div class="stat-label">Record</div>
-      </div>
-      <div>
-        <div class="stat-num">79%</div>
-        <div class="stat-label">Hit Rate</div>
-      </div>
-      <div>
-        <div class="stat-num">+18.4</div>
-        <div class="stat-label">Units</div>
-      </div>
-      <div>
-        <div class="stat-num">+6.2%</div>
-        <div class="stat-label">ROI</div>
-      </div>
+      <div><div class="stat-num">235-62</div><div class="stat-label">Record</div></div>
+      <div><div class="stat-num">79%</div><div class="stat-label">Hit Rate</div></div>
+      <div><div class="stat-num">+18.4</div><div class="stat-label">Units</div></div>
+      <div><div class="stat-num">+6.2%</div><div class="stat-label">ROI</div></div>
     </div>
   </div>
 
   <div id="today" class="tab-content active">
     <div class="card">
-      <h2>Today’s Picks — Nov 1 <span style="font-size:13.5px; color:var(--muted); font-weight:500;">(1 free)</span></h2>
-
+      <h2>Today’s Picks — Nov 1 <span style="font-size:13px; color:var(--muted); font-weight:500;">(1 free)</span></h2>
       <div class="pick">
-        <div>
-          <div class="match">Liverpool vs Arsenal <span class="free-tag">FREE</span></div>
-          <div class="meta">Premier League • 16:30</div>
-        </div>
+        <div><div class="match">Liverpool vs Arsenal <span class="free-tag">FREE</span></div><div class="meta">Premier League • 16:30</div></div>
         <span class="badge">Over 1.5</span>
       </div>
-
-      <div style="position: relative; margin-top: 10px;">
-        <div class="pick locked">
-          <div>
-            <div class="match">Bayern Munich vs Union Berlin</div>
-            <div class="meta">Bundesliga • 15:30</div>
-          </div>
-          <span class="badge">Over 1.5</span>
-        </div>
-        <div class="lock-overlay">🔒 Unlock with membership</div>
-      </div>
-
-      <div style="position: relative;">
-        <div class="pick locked">
-          <div>
-            <div class="match">Inter vs Napoli</div>
-            <div class="meta">Serie A • 20:45</div>
-          </div>
-          <span class="badge">Over 1.5</span>
-        </div>
-        <div class="lock-overlay">🔒 Unlock with membership</div>
-      </div>
-
-      <div style="position: relative;">
-        <div class="pick locked">
-          <div>
-            <div class="match">Real Madrid vs Atletico</div>
-            <div class="meta">La Liga • 21:00</div>
-          </div>
-          <span class="badge">Over 1.5</span>
-        </div>
-        <div class="lock-overlay">🔒 Unlock with membership</div>
-      </div>
-
-      <div style="position: relative;">
-        <div class="pick locked">
-          <div>
-            <div class="match">Man City vs Chelsea</div>
-            <div class="meta">Premier League • 17:30</div>
-          </div>
-          <span class="badge">Over 1.5</span>
-        </div>
-        <div class="lock-overlay">🔒 Unlock with membership</div>
-      </div>
-
-      <div style="position: relative;">
-        <div class="pick locked">
-          <div>
-            <div class="match">PSG vs Marseille</div>
-            <div class="meta">Ligue 1 • 20:00</div>
-          </div>
-          <span class="badge">Over 1.5</span>
-        </div>
-        <div class="lock-overlay">🔒 Unlock with membership</div>
-      </div>
-
-      <p class="section-note">1 free pick today. Full slate + reasoning unlocked for members.</p>
+      <div style="position: relative; margin-top: 8px;"><div class="pick locked"><div><div class="match">Bayern Munich vs Union Berlin</div><div class="meta">Bundesliga • 15:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div style="position: relative;"><div class="pick locked"><div><div class="match">Inter vs Napoli</div><div class="meta">Serie A • 20:45</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div style="position: relative;"><div class="pick locked"><div><div class="match">Real Madrid vs Atletico</div><div class="meta">La Liga • 21:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div style="position: relative;"><div class="pick locked"><div><div class="match">Man City vs Chelsea</div><div class="meta">Premier League • 17:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div style="position: relative;"><div class="pick locked"><div><div class="match">PSG vs Marseille</div><div class="meta">Ligue 1 • 20:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <p class="section-note">1 free pick today. Full slate unlocked for members.</p>
     </div>
   </div>
 
   <div id="results" class="tab-content">
     <div class="card">
       <h2>Full Public Record</h2>
-      <table class="results-table">
-        <thead>
-          <tr><th>Date</th><th>Match</th><th>Result</th><th>Pick</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Oct 31</td><td>West Ham vs West Brom</td><td>1-3</td><td class="win">W</td></tr>
-          <tr><td>Oct 31</td><td>Kashima vs Cerezo</td><td>4-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 31</td><td>Jeonbuk vs Daejeon</td><td>0-0</td><td class="loss">L</td></tr>
-          <tr><td>Oct 30</td><td>Cracovia vs Motor</td><td>1-2</td><td class="win">W</td></tr>
-          <tr><td>Oct 30</td><td>Al Ittifaq vs Malkiya</td><td>3-0</td><td class="win">W</td></tr>
-          <tr><td>Oct 29</td><td>Real Madrid vs Barcelona</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 28</td><td>Man City vs Chelsea</td><td>3-2</td><td class="win">W</td></tr>
-          <tr><td>Oct 27</td><td>PSG vs Lyon</td><td>1-0</td><td class="loss">L</td></tr>
-          <tr><td>Oct 26</td><td>Dortmund vs Leverkusen</td><td>2-2</td><td class="win">W</td></tr>
-          <tr><td>Oct 25</td><td>Inter vs Juventus</td><td>2-0</td><td class="win">W</td></tr>
-          <tr><td>Oct 24</td><td>Arsenal vs Tottenham</td><td>3-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 23</td><td>Barcelona vs Real Sociedad</td><td>2-0</td><td class="win">W</td></tr>
-          <tr><td>Oct 22</td><td>Bayern vs Dortmund</td><td>4-2</td><td class="win">W</td></tr>
-          <tr><td>Oct 21</td><td>Napoli vs Roma</td><td>1-0</td><td class="loss">L</td></tr>
-          <tr><td>Oct 20</td><td>Liverpool vs Brighton</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 19</td><td>AC Milan vs Lazio</td><td>3-0</td><td class="win">W</td></tr>
-          <tr><td>Oct 18</td><td>Atletico vs Sevilla</td><td>1-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 17</td><td>Man United vs Wolves</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 16</td><td>PSG vs Nice</td><td>3-2</td><td class="win">W</td></tr>
-          <tr><td>Oct 15</td><td>Inter vs Torino</td><td>2-0</td><td class="win">W</td></tr>
-          <tr><td>Oct 14</td><td>Real Betis vs Valencia</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 13</td><td>Juventus vs Bologna</td><td>3-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 12</td><td>Chelsea vs Newcastle</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 11</td><td>Leverkusen vs Frankfurt</td><td>4-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 10</td><td>Marseille vs Lyon</td><td>2-2</td><td class="win">W</td></tr>
-          <tr><td>Oct 9</td><td>Atalanta vs Fiorentina</td><td>3-2</td><td class="win">W</td></tr>
-          <tr><td>Oct 8</td><td>Sevilla vs Villarreal</td><td>1-0</td><td class="loss">L</td></tr>
-          <tr><td>Oct 7</td><td>Dortmund vs Leipzig</td><td>3-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 6</td><td>Tottenham vs Brighton</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 5</td><td>Roma vs Inter</td><td>1-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 4</td><td>Barcelona vs Girona</td><td>4-1</td><td class="win">W</td></tr>
-          <tr><td>Oct 3</td><td>Bayern vs Stuttgart</td><td>3-0</td><td class="win">W</td></tr>
-          <tr><td>Oct 2</td><td>Man City vs Fulham</td><td>3-2</td><td class="win">W</td></tr>
-        </tbody>
-      </table>
-      <p class="section-note">Full public graded record. Scroll for more.</p>
+      <div class="day-group">
+        <div class="day-label">Oct 31</div>
+        <table class="results-table"><tbody>
+          <tr><td>West Ham vs West Brom</td><td>1-3</td><td class="win">W</td></tr>
+          <tr><td>Kashima vs Cerezo</td><td>4-1</td><td class="win">W</td></tr>
+          <tr><td>Jeonbuk vs Daejeon</td><td>0-0</td><td class="loss">L</td></tr>
+          <tr><td>Cracovia vs Motor</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>Al Ittifaq vs Malkiya</td><td>3-0</td><td class="win">W</td></tr>
+          <tr><td>Sporting vs Benfica</td><td>2-2</td><td class="win">W</td></tr>
+        </tbody></table>
+      </div>
+      <div class="day-group">
+        <div class="day-label">Oct 30</div>
+        <table class="results-table"><tbody>
+          <tr><td>Real Madrid vs Barcelona</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>Man City vs Chelsea</td><td>3-2</td><td class="win">W</td></tr>
+          <tr><td>PSG vs Lyon</td><td>1-0</td><td class="loss">L</td></tr>
+          <tr><td>Bayern vs Dortmund</td><td>4-2</td><td class="win">W</td></tr>
+          <tr><td>Inter vs Juventus</td><td>2-0</td><td class="win">W</td></tr>
+          <tr><td>Arsenal vs Tottenham</td><td>3-1</td><td class="win">W</td></tr>
+        </tbody></table>
+      </div>
+      <div class="day-group">
+        <div class="day-label">Oct 29</div>
+        <table class="results-table"><tbody>
+          <tr><td>Barcelona vs Real Sociedad</td><td>2-0</td><td class="win">W</td></tr>
+          <tr><td>Napoli vs Roma</td><td>1-0</td><td class="loss">L</td></tr>
+          <tr><td>Liverpool vs Brighton</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>AC Milan vs Lazio</td><td>3-0</td><td class="win">W</td></tr>
+          <tr><td>Atletico vs Sevilla</td><td>1-1</td><td class="win">W</td></tr>
+        </tbody></table>
+      </div>
+      <div class="day-group">
+        <div class="day-label">Oct 28</div>
+        <table class="results-table"><tbody>
+          <tr><td>Man United vs Wolves</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>PSG vs Nice</td><td>3-2</td><td class="win">W</td></tr>
+          <tr><td>Inter vs Torino</td><td>2-0</td><td class="win">W</td></tr>
+          <tr><td>Real Betis vs Valencia</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>Juventus vs Bologna</td><td>3-1</td><td class="win">W</td></tr>
+          <tr><td>Chelsea vs Newcastle</td><td>2-1</td><td class="win">W</td></tr>
+        </tbody></table>
+      </div>
+      <div class="day-group">
+        <div class="day-label">Oct 27</div>
+        <table class="results-table"><tbody>
+          <tr><td>Leverkusen vs Frankfurt</td><td>4-1</td><td class="win">W</td></tr>
+          <tr><td>Marseille vs Lyon</td><td>2-2</td><td class="win">W</td></tr>
+          <tr><td>Atalanta vs Fiorentina</td><td>3-2</td><td class="win">W</td></tr>
+          <tr><td>Sevilla vs Villarreal</td><td>1-0</td><td class="loss">L</td></tr>
+          <tr><td>Dortmund vs Leipzig</td><td>3-1</td><td class="win">W</td></tr>
+        </tbody></table>
+      </div>
+      <div class="day-group">
+        <div class="day-label">Oct 26</div>
+        <table class="results-table"><tbody>
+          <tr><td>Tottenham vs Brighton</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>Roma vs Inter</td><td>1-1</td><td class="win">W</td></tr>
+          <tr><td>Barcelona vs Girona</td><td>4-1</td><td class="win">W</td></tr>
+          <tr><td>Bayern vs Stuttgart</td><td>3-0</td><td class="win">W</td></tr>
+          <tr><td>Man City vs Fulham</td><td>3-2</td><td class="win">W</td></tr>
+          <tr><td>Ajax vs PSV</td><td>2-1</td><td class="win">W</td></tr>
+        </tbody></table>
+      </div>
+      <p class="section-note">Full public graded record. Multiple picks per day.</p>
     </div>
   </div>
 
   <div class="card">
     <h2>Why Over 1.5</h2>
-    <p style="font-size:14.5px; color:#e2e8f0;">
-      Only loses on 0-0, 1-0 or 0-1. Across top European leagues the baseline is ~76-80%. One focused market, multiple picks per day, public record every morning. No chasing, no complicated systems.
-    </p>
+    <p style="font-size:14px; color:#e2e8f0;">Only loses on 0-0, 1-0 or 0-1. Across top European leagues the baseline is ~76-80%. One focused market, multiple picks per day, public record every morning.</p>
   </div>
 
   <div class="price">€19 / month • Cancel anytime • Stripe</div>
   <a class="cta" href="#" id="stripe-cta">Unlock Full Access</a>
-
   <p class="note">Public record. Bet responsibly. 18+ only. Past performance is not a guarantee of future results.</p>
   <footer>Goals15 • goals15.netlify.app</footer>
 </div>
@@ -327,9 +256,8 @@
 <script>
 document.getElementById('stripe-cta').addEventListener('click', function(e) {
   e.preventDefault();
-  alert('Stripe Checkout will be wired next. Send a Payment Link or Price ID and I’ll connect it.');
+  alert('Stripe Checkout will be wired next.');
 });
-
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
