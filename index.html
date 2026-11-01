@@ -265,16 +265,12 @@
   </div>
 
   <div class="price">€19 / month • Cancel anytime • Stripe</div>
-  <a class="cta" href="#" id="stripe-cta">Unlock Full Access</a>
+  <a class="cta" href="https://buy.stripe.com/fZu7sKgWj0uA76R26S4wM0a" id="stripe-cta">Unlock Full Access</a>
   <p class="note">Public record. Bet responsibly. 18+ only. Past performance is not a guarantee of future results.</p>
   <footer>Goals15 • goals15.netlify.app</footer>
 </div>
 
 <script>
-document.getElementById('stripe-cta').addEventListener('click', function(e) {
-  e.preventDefault();
-  alert('Stripe Checkout will be wired next.');
-});
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
