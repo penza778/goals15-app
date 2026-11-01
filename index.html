@@ -11,8 +11,8 @@
 <style>
   :root {
     --bg: #010204;
-    --card: rgba(10, 14, 22, 0.7);
-    --border: rgba(255, 255, 255, 0.04);
+    --card: rgba(10, 14, 22, 0.72);
+    --border: rgba(255, 255, 255, 0.045);
     --accent: #00f0a0;
     --text: #f8fafc;
     --muted: #6b7c93;
@@ -108,9 +108,34 @@
     font-size: 13px; font-weight: 650; color: var(--accent);
     backdrop-filter: blur(4px);
   }
-  .results-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .results-table th { text-align: left; color: var(--muted); font-weight: 600; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 10.5px; letter-spacing: 0.5px; text-transform: uppercase; }
-  .results-table td { padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.02); }
+  .day-card {
+    background: rgba(10, 14, 22, 0.5);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+  .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: 650;
+    color: var(--muted);
+  }
+  .day-count { font-size: 11px; color: var(--accent); font-weight: 600; }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.025);
+    font-size: 13.5px;
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-match { font-weight: 550; }
+  .result-score { color: var(--muted); font-size: 12.5px; margin-right: 12px; }
   .win { color: var(--win); font-weight: 650; }
   .loss { color: var(--loss); font-weight: 650; }
   .cta {
@@ -129,8 +154,6 @@
   .section-note { margin-top: 12px; font-size: 12px; color: var(--muted); }
   .tab-content { display: none; }
   .tab-content.active { display: block; }
-  .day-group { margin-bottom: 18px; }
-  .day-label { font-size: 12px; color: var(--muted); font-weight: 600; margin-bottom: 6px; letter-spacing: 0.3px; }
 </style>
 </head>
 <body>
@@ -167,79 +190,67 @@
       <div style="position: relative;"><div class="pick locked"><div><div class="match">Real Madrid vs Atletico</div><div class="meta">La Liga • 21:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
       <div style="position: relative;"><div class="pick locked"><div><div class="match">Man City vs Chelsea</div><div class="meta">Premier League • 17:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
       <div style="position: relative;"><div class="pick locked"><div><div class="match">PSG vs Marseille</div><div class="meta">Ligue 1 • 20:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div style="position: relative;"><div class="pick locked"><div><div class="match">Juventus vs Lazio</div><div class="meta">Serie A • 18:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
+      <div style="position: relative;"><div class="pick locked"><div><div class="match">Barcelona vs Valencia</div><div class="meta">La Liga • 19:15</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
       <p class="section-note">1 free pick today. Full slate unlocked for members.</p>
     </div>
   </div>
 
   <div id="results" class="tab-content">
-    <div class="card">
-      <h2>Full Public Record</h2>
-      <div class="day-group">
-        <div class="day-label">Oct 31</div>
-        <table class="results-table"><tbody>
-          <tr><td>West Ham vs West Brom</td><td>1-3</td><td class="win">W</td></tr>
-          <tr><td>Kashima vs Cerezo</td><td>4-1</td><td class="win">W</td></tr>
-          <tr><td>Jeonbuk vs Daejeon</td><td>0-0</td><td class="loss">L</td></tr>
-          <tr><td>Cracovia vs Motor</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>Al Ittifaq vs Malkiya</td><td>3-0</td><td class="win">W</td></tr>
-          <tr><td>Sporting vs Benfica</td><td>2-2</td><td class="win">W</td></tr>
-        </tbody></table>
-      </div>
-      <div class="day-group">
-        <div class="day-label">Oct 30</div>
-        <table class="results-table"><tbody>
-          <tr><td>Real Madrid vs Barcelona</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>Man City vs Chelsea</td><td>3-2</td><td class="win">W</td></tr>
-          <tr><td>PSG vs Lyon</td><td>1-0</td><td class="loss">L</td></tr>
-          <tr><td>Bayern vs Dortmund</td><td>4-2</td><td class="win">W</td></tr>
-          <tr><td>Inter vs Juventus</td><td>2-0</td><td class="win">W</td></tr>
-          <tr><td>Arsenal vs Tottenham</td><td>3-1</td><td class="win">W</td></tr>
-        </tbody></table>
-      </div>
-      <div class="day-group">
-        <div class="day-label">Oct 29</div>
-        <table class="results-table"><tbody>
-          <tr><td>Barcelona vs Real Sociedad</td><td>2-0</td><td class="win">W</td></tr>
-          <tr><td>Napoli vs Roma</td><td>1-0</td><td class="loss">L</td></tr>
-          <tr><td>Liverpool vs Brighton</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>AC Milan vs Lazio</td><td>3-0</td><td class="win">W</td></tr>
-          <tr><td>Atletico vs Sevilla</td><td>1-1</td><td class="win">W</td></tr>
-        </tbody></table>
-      </div>
-      <div class="day-group">
-        <div class="day-label">Oct 28</div>
-        <table class="results-table"><tbody>
-          <tr><td>Man United vs Wolves</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>PSG vs Nice</td><td>3-2</td><td class="win">W</td></tr>
-          <tr><td>Inter vs Torino</td><td>2-0</td><td class="win">W</td></tr>
-          <tr><td>Real Betis vs Valencia</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>Juventus vs Bologna</td><td>3-1</td><td class="win">W</td></tr>
-          <tr><td>Chelsea vs Newcastle</td><td>2-1</td><td class="win">W</td></tr>
-        </tbody></table>
-      </div>
-      <div class="day-group">
-        <div class="day-label">Oct 27</div>
-        <table class="results-table"><tbody>
-          <tr><td>Leverkusen vs Frankfurt</td><td>4-1</td><td class="win">W</td></tr>
-          <tr><td>Marseille vs Lyon</td><td>2-2</td><td class="win">W</td></tr>
-          <tr><td>Atalanta vs Fiorentina</td><td>3-2</td><td class="win">W</td></tr>
-          <tr><td>Sevilla vs Villarreal</td><td>1-0</td><td class="loss">L</td></tr>
-          <tr><td>Dortmund vs Leipzig</td><td>3-1</td><td class="win">W</td></tr>
-        </tbody></table>
-      </div>
-      <div class="day-group">
-        <div class="day-label">Oct 26</div>
-        <table class="results-table"><tbody>
-          <tr><td>Tottenham vs Brighton</td><td>2-1</td><td class="win">W</td></tr>
-          <tr><td>Roma vs Inter</td><td>1-1</td><td class="win">W</td></tr>
-          <tr><td>Barcelona vs Girona</td><td>4-1</td><td class="win">W</td></tr>
-          <tr><td>Bayern vs Stuttgart</td><td>3-0</td><td class="win">W</td></tr>
-          <tr><td>Man City vs Fulham</td><td>3-2</td><td class="win">W</td></tr>
-          <tr><td>Ajax vs PSV</td><td>2-1</td><td class="win">W</td></tr>
-        </tbody></table>
-      </div>
-      <p class="section-note">Full public graded record. Multiple picks per day.</p>
+    <div class="day-card">
+      <div class="day-header">Oct 31 <span class="day-count">8 picks</span></div>
+      <div class="result-row"><span class="result-match">West Ham vs West Brom</span><span><span class="result-score">1-3</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Kashima vs Cerezo</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Jeonbuk vs Daejeon</span><span><span class="result-score">0-0</span><span class="loss">L</span></span></div>
+      <div class="result-row"><span class="result-match">Cracovia vs Motor</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Al Ittifaq vs Malkiya</span><span><span class="result-score">3-0</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Sporting vs Benfica</span><span><span class="result-score">2-2</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Porto vs Braga</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Ajax vs Feyenoord</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
     </div>
+    <div class="day-card">
+      <div class="day-header">Oct 30 <span class="day-count">9 picks</span></div>
+      <div class="result-row"><span class="result-match">Real Madrid vs Barcelona</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Man City vs Chelsea</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">PSG vs Lyon</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
+      <div class="result-row"><span class="result-match">Bayern vs Dortmund</span><span><span class="result-score">4-2</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Inter vs Juventus</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Arsenal vs Tottenham</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Liverpool vs Everton</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Napoli vs Milan</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Atletico vs Valencia</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
+    </div>
+    <div class="day-card">
+      <div class="day-header">Oct 29 <span class="day-count">7 picks</span></div>
+      <div class="result-row"><span class="result-match">Barcelona vs Real Sociedad</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Napoli vs Roma</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
+      <div class="result-row"><span class="result-match">Liverpool vs Brighton</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">AC Milan vs Lazio</span><span><span class="result-score">3-0</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Atletico vs Sevilla</span><span><span class="result-score">1-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Dortmund vs Leverkusen</span><span><span class="result-score">2-2</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Marseille vs Monaco</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
+    </div>
+    <div class="day-card">
+      <div class="day-header">Oct 28 <span class="day-count">8 picks</span></div>
+      <div class="result-row"><span class="result-match">Man United vs Wolves</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">PSG vs Nice</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Inter vs Torino</span><span><span class="result-score">2-0</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Real Betis vs Valencia</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Juventus vs Bologna</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Chelsea vs Newcastle</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Bayern vs Frankfurt</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Lazio vs Atalanta</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
+    </div>
+    <div class="day-card">
+      <div class="day-header">Oct 27 <span class="day-count">6 picks</span></div>
+      <div class="result-row"><span class="result-match">Leverkusen vs Frankfurt</span><span><span class="result-score">4-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Marseille vs Lyon</span><span><span class="result-score">2-2</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Atalanta vs Fiorentina</span><span><span class="result-score">3-2</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Sevilla vs Villarreal</span><span><span class="result-score">1-0</span><span class="loss">L</span></span></div>
+      <div class="result-row"><span class="result-match">Dortmund vs Leipzig</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
+      <div class="result-row"><span class="result-match">Ajax vs PSV</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
+    </div>
+    <p class="section-note" style="text-align:center; margin-top:16px;">Full public graded record. Multiple picks every day.</p>
   </div>
 
   <div class="card">
