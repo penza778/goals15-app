@@ -5,77 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Goals15 — Over 1.5 Goals Desk</title>
 <meta name="description" content="Goals15: Daily Over 1.5 goals picks with public graded record. Last 30 days hit rate shown. Simple, consistent strategy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #05070e;
-    --card: #0f141f;
-    --border: #1c2333;
-    --accent: #00e676;
-    --accent2: #00c853;
-    --text: #f8fafc;
-    --muted: #94a3b8;
+    --bg: #03050a;
+    --card: rgba(15, 20, 32, 0.72);
+    --border: rgba(255, 255, 255, 0.06);
+    --accent: #00f5a0;
+    --accent-dim: #00c87a;
+    --text: #f1f5f9;
+    --muted: #8b9bb4;
     --win: #22c55e;
-    --loss: #ef4444;
+    --loss: #f87171;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: radial-gradient(ellipse at top, #0c1220 0%, var(--bg) 70%);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 245, 160, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0, 200, 122, 0.04), transparent),
+      var(--bg);
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.55;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 18px 120px; }
-  header { text-align: center; margin-bottom: 36px; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 40px 16px 140px; }
+  header { text-align: center; margin-bottom: 40px; }
   .logo {
-    font-size: 56px;
+    font-size: 58px;
     font-weight: 800;
-    letter-spacing: -2px;
-    background: linear-gradient(135deg, #34d399 0%, #00e676 50%, #10b981 100%);
+    letter-spacing: -2.5px;
+    background: linear-gradient(135deg, #ffffff 0%, #00f5a0 60%, #00c87a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .tagline { color: var(--muted); margin-top: 6px; font-size: 15px; font-weight: 500; letter-spacing: 0.3px; }
+  .tagline { color: var(--muted); margin-top: 8px; font-size: 14.5px; font-weight: 500; letter-spacing: 0.2px; }
   .card {
-    background: linear-gradient(180deg, #121826 0%, #0f141f 100%);
+    background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 22px;
+    border-radius: 22px;
+    padding: 24px;
     margin-bottom: 16px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   }
-  h2 { font-size: 18px; margin-bottom: 14px; font-weight: 650; letter-spacing: -0.2px; }
+  h2 { font-size: 17.5px; margin-bottom: 16px; font-weight: 650; letter-spacing: -0.3px; }
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 8px;
     text-align: center;
   }
-  .stat-num { font-size: 24px; font-weight: 750; color: var(--accent); letter-spacing: -0.5px; }
-  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+  .stat-num { font-size: 26px; font-weight: 750; color: var(--accent); letter-spacing: -0.8px; }
+  .stat-label { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; font-weight: 600; }
   .pick {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
   }
   .pick:last-child { border-bottom: none; }
   .match { font-weight: 650; font-size: 15.5px; letter-spacing: -0.2px; }
-  .meta { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .meta { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
   .badge {
-    background: rgba(0, 230, 118, 0.12);
+    background: rgba(0, 245, 160, 0.1);
     color: var(--accent);
-    padding: 4px 11px;
+    padding: 5px 12px;
     border-radius: 999px;
     font-size: 11px;
     font-weight: 650;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.4px;
+    border: 1px solid rgba(0, 245, 160, 0.15);
   }
   .locked {
     position: relative;
-    filter: blur(5px);
+    filter: blur(6px);
     user-select: none;
     pointer-events: none;
   }
@@ -85,42 +95,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(5, 7, 14, 0.75);
-    border-radius: 12px;
+    background: rgba(3, 5, 10, 0.65);
+    border-radius: 14px;
     font-size: 13.5px;
     font-weight: 650;
     color: var(--accent);
     z-index: 2;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(4px);
   }
   .results-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-  .results-table th { text-align: left; color: var(--muted); font-weight: 550; padding: 8px 4px; border-bottom: 1px solid var(--border); font-size: 12px; letter-spacing: 0.4px; }
-  .results-table td { padding: 9px 4px; border-bottom: 1px solid #161e2e; }
+  .results-table th { text-align: left; color: var(--muted); font-weight: 600; padding: 8px 2px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 11.5px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .results-table td { padding: 10px 2px; border-bottom: 1px solid rgba(255,255,255,0.03); }
   .win { color: var(--win); font-weight: 650; }
   .loss { color: var(--loss); font-weight: 650; }
   .cta {
     display: block;
     width: 100%;
-    background: linear-gradient(135deg, #00e676, #00c853);
+    background: linear-gradient(135deg, #00f5a0, #00c87a);
     color: #000;
     text-align: center;
     padding: 18px;
-    border-radius: 14px;
+    border-radius: 16px;
     font-weight: 750;
     font-size: 16.5px;
     text-decoration: none;
-    margin: 10px 0 6px;
+    margin: 12px 0 8px;
     letter-spacing: -0.2px;
-    box-shadow: 0 4px 20px rgba(0, 230, 118, 0.25);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 6px 24px rgba(0, 245, 160, 0.22);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
-  .cta:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(0, 230, 118, 0.35); }
-  .price { text-align: center; color: var(--muted); font-size: 13.5px; margin-bottom: 14px; font-weight: 500; }
-  .note { font-size: 12.5px; color: var(--muted); text-align: center; margin-top: 24px; line-height: 1.5; }
-  footer { text-align: center; margin-top: 40px; font-size: 12px; color: #4b5563; }
-  .period { font-size: 12.5px; color: var(--muted); margin-bottom: 10px; font-weight: 500; }
-  .free-tag { font-size: 10.5px; color: var(--accent); margin-left: 8px; font-weight: 700; letter-spacing: 0.5px; }
-  .section-note { margin-top: 12px; font-size: 12.5px; color: var(--muted); }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0, 245, 160, 0.32); }
+  .price { text-align: center; color: var(--muted); font-size: 13.5px; margin-bottom: 16px; font-weight: 500; }
+  .note { font-size: 12.5px; color: #64748b; text-align: center; margin-top: 28px; line-height: 1.55; }
+  footer { text-align: center; margin-top: 48px; font-size: 12px; color: #475569; }
+  .period { font-size: 12.5px; color: var(--muted); margin-bottom: 12px; font-weight: 500; }
+  .free-tag { font-size: 10px; color: var(--accent); margin-left: 8px; font-weight: 700; letter-spacing: 0.6px; background: rgba(0,245,160,0.12); padding: 2px 6px; border-radius: 4px; }
+  .section-note { margin-top: 14px; font-size: 12.5px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -163,7 +173,7 @@
       <span class="badge">Over 1.5</span>
     </div>
 
-    <div style="position: relative; margin-top: 6px;">
+    <div style="position: relative; margin-top: 8px;">
       <div class="pick locked">
         <div>
           <div class="match">Bayern Munich vs Union Berlin</div>
