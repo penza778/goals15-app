@@ -32,7 +32,7 @@
     -webkit-font-smoothing: antialiased;
   }
   .wrap { max-width: 620px; margin: 0 auto; padding: 48px 16px 160px; }
-  header { text-align: center; margin-bottom: 44px; }
+  header { text-align: center; margin-bottom: 36px; }
   .logo {
     font-size: 62px;
     font-weight: 800;
@@ -43,6 +43,30 @@
     background-clip: text;
   }
   .tagline { color: var(--muted); margin-top: 10px; font-size: 14px; font-weight: 500; letter-spacing: 0.3px; }
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    background: rgba(12, 16, 26, 0.5);
+    padding: 6px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    font-weight: 650;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .tab.active {
+    background: rgba(0, 240, 160, 0.12);
+    color: var(--accent);
+  }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -130,6 +154,8 @@
   .period { font-size: 12.5px; color: var(--muted); margin-bottom: 14px; font-weight: 500; }
   .free-tag { font-size: 10px; color: var(--accent); margin-left: 8px; font-weight: 700; letter-spacing: 0.7px; background: rgba(0,240,160,0.1); padding: 2px 7px; border-radius: 5px; }
   .section-note { margin-top: 16px; font-size: 12.5px; color: var(--muted); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
 </style>
 </head>
 <body>
@@ -138,6 +164,11 @@
     <div class="logo">Goals15</div>
     <div class="tagline">Over 1.5 Goals Desk • Public Record • Daily Picks</div>
   </header>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="today">Today</div>
+    <div class="tab" data-tab="results">Results</div>
+  </div>
 
   <div class="card">
     <div class="period">Last 30 days (Oct 2 – Nov 1, 2026)</div>
@@ -161,105 +192,122 @@
     </div>
   </div>
 
-  <div class="card">
-    <h2>Today’s Picks — Nov 1 <span style="font-size:13.5px; color:var(--muted); font-weight:500;">(1 free)</span></h2>
+  <div id="today" class="tab-content active">
+    <div class="card">
+      <h2>Today’s Picks — Nov 1 <span style="font-size:13.5px; color:var(--muted); font-weight:500;">(1 free)</span></h2>
 
-    <div class="pick">
-      <div>
-        <div class="match">Liverpool vs Arsenal <span class="free-tag">FREE</span></div>
-        <div class="meta">Premier League • 16:30</div>
-      </div>
-      <span class="badge">Over 1.5</span>
-    </div>
-
-    <div style="position: relative; margin-top: 10px;">
-      <div class="pick locked">
+      <div class="pick">
         <div>
-          <div class="match">Bayern Munich vs Union Berlin</div>
-          <div class="meta">Bundesliga • 15:30</div>
+          <div class="match">Liverpool vs Arsenal <span class="free-tag">FREE</span></div>
+          <div class="meta">Premier League • 16:30</div>
         </div>
         <span class="badge">Over 1.5</span>
       </div>
-      <div class="lock-overlay">🔒 Unlock with membership</div>
-    </div>
 
-    <div style="position: relative;">
-      <div class="pick locked">
-        <div>
-          <div class="match">Inter vs Napoli</div>
-          <div class="meta">Serie A • 20:45</div>
+      <div style="position: relative; margin-top: 10px;">
+        <div class="pick locked">
+          <div>
+            <div class="match">Bayern Munich vs Union Berlin</div>
+            <div class="meta">Bundesliga • 15:30</div>
+          </div>
+          <span class="badge">Over 1.5</span>
         </div>
-        <span class="badge">Over 1.5</span>
+        <div class="lock-overlay">🔒 Unlock with membership</div>
       </div>
-      <div class="lock-overlay">🔒 Unlock with membership</div>
-    </div>
 
-    <div style="position: relative;">
-      <div class="pick locked">
-        <div>
-          <div class="match">Real Madrid vs Atletico</div>
-          <div class="meta">La Liga • 21:00</div>
+      <div style="position: relative;">
+        <div class="pick locked">
+          <div>
+            <div class="match">Inter vs Napoli</div>
+            <div class="meta">Serie A • 20:45</div>
+          </div>
+          <span class="badge">Over 1.5</span>
         </div>
-        <span class="badge">Over 1.5</span>
+        <div class="lock-overlay">🔒 Unlock with membership</div>
       </div>
-      <div class="lock-overlay">🔒 Unlock with membership</div>
-    </div>
 
-    <div style="position: relative;">
-      <div class="pick locked">
-        <div>
-          <div class="match">Man City vs Chelsea</div>
-          <div class="meta">Premier League • 17:30</div>
+      <div style="position: relative;">
+        <div class="pick locked">
+          <div>
+            <div class="match">Real Madrid vs Atletico</div>
+            <div class="meta">La Liga • 21:00</div>
+          </div>
+          <span class="badge">Over 1.5</span>
         </div>
-        <span class="badge">Over 1.5</span>
+        <div class="lock-overlay">🔒 Unlock with membership</div>
       </div>
-      <div class="lock-overlay">🔒 Unlock with membership</div>
-    </div>
 
-    <div style="position: relative;">
-      <div class="pick locked">
-        <div>
-          <div class="match">PSG vs Marseille</div>
-          <div class="meta">Ligue 1 • 20:00</div>
+      <div style="position: relative;">
+        <div class="pick locked">
+          <div>
+            <div class="match">Man City vs Chelsea</div>
+            <div class="meta">Premier League • 17:30</div>
+          </div>
+          <span class="badge">Over 1.5</span>
         </div>
-        <span class="badge">Over 1.5</span>
+        <div class="lock-overlay">🔒 Unlock with membership</div>
       </div>
-      <div class="lock-overlay">🔒 Unlock with membership</div>
-    </div>
 
-    <p class="section-note">1 free pick today. Full slate + reasoning unlocked for members.</p>
+      <div style="position: relative;">
+        <div class="pick locked">
+          <div>
+            <div class="match">PSG vs Marseille</div>
+            <div class="meta">Ligue 1 • 20:00</div>
+          </div>
+          <span class="badge">Over 1.5</span>
+        </div>
+        <div class="lock-overlay">🔒 Unlock with membership</div>
+      </div>
+
+      <p class="section-note">1 free pick today. Full slate + reasoning unlocked for members.</p>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>Last 30 Days Results</h2>
-    <table class="results-table">
-      <thead>
-        <tr><th>Date</th><th>Match</th><th>Result</th><th>Pick</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Oct 31</td><td>West Ham vs West Brom</td><td>1-3</td><td class="win">W</td></tr>
-        <tr><td>Oct 31</td><td>Kashima vs Cerezo</td><td>4-1</td><td class="win">W</td></tr>
-        <tr><td>Oct 31</td><td>Jeonbuk vs Daejeon</td><td>0-0</td><td class="loss">L</td></tr>
-        <tr><td>Oct 30</td><td>Cracovia vs Motor</td><td>1-2</td><td class="win">W</td></tr>
-        <tr><td>Oct 30</td><td>Al Ittifaq vs Malkiya</td><td>3-0</td><td class="win">W</td></tr>
-        <tr><td>Oct 29</td><td>Real Madrid vs Barcelona</td><td>2-1</td><td class="win">W</td></tr>
-        <tr><td>Oct 28</td><td>Man City vs Chelsea</td><td>3-2</td><td class="win">W</td></tr>
-        <tr><td>Oct 27</td><td>PSG vs Lyon</td><td>1-0</td><td class="loss">L</td></tr>
-        <tr><td>Oct 26</td><td>Dortmund vs Leverkusen</td><td>2-2</td><td class="win">W</td></tr>
-        <tr><td>Oct 25</td><td>Inter vs Juventus</td><td>2-0</td><td class="win">W</td></tr>
-        <tr><td>Oct 24</td><td>Arsenal vs Tottenham</td><td>3-1</td><td class="win">W</td></tr>
-        <tr><td>Oct 23</td><td>Barcelona vs Real Sociedad</td><td>2-0</td><td class="win">W</td></tr>
-        <tr><td>Oct 22</td><td>Bayern vs Dortmund</td><td>4-2</td><td class="win">W</td></tr>
-        <tr><td>Oct 21</td><td>Napoli vs Roma</td><td>1-0</td><td class="loss">L</td></tr>
-        <tr><td>Oct 20</td><td>Liverpool vs Brighton</td><td>2-1</td><td class="win">W</td></tr>
-        <tr><td>Oct 19</td><td>AC Milan vs Lazio</td><td>3-0</td><td class="win">W</td></tr>
-        <tr><td>Oct 18</td><td>Atletico vs Sevilla</td><td>1-1</td><td class="win">W</td></tr>
-        <tr><td>Oct 17</td><td>Man United vs Wolves</td><td>2-1</td><td class="win">W</td></tr>
-        <tr><td>Oct 16</td><td>PSG vs Nice</td><td>3-2</td><td class="win">W</td></tr>
-        <tr><td>Oct 15</td><td>Inter vs Torino</td><td>2-0</td><td class="win">W</td></tr>
-      </tbody>
-    </table>
-    <p class="section-note">Full public graded record. All results shown.</p>
+  <div id="results" class="tab-content">
+    <div class="card">
+      <h2>Full Public Record</h2>
+      <table class="results-table">
+        <thead>
+          <tr><th>Date</th><th>Match</th><th>Result</th><th>Pick</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Oct 31</td><td>West Ham vs West Brom</td><td>1-3</td><td class="win">W</td></tr>
+          <tr><td>Oct 31</td><td>Kashima vs Cerezo</td><td>4-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 31</td><td>Jeonbuk vs Daejeon</td><td>0-0</td><td class="loss">L</td></tr>
+          <tr><td>Oct 30</td><td>Cracovia vs Motor</td><td>1-2</td><td class="win">W</td></tr>
+          <tr><td>Oct 30</td><td>Al Ittifaq vs Malkiya</td><td>3-0</td><td class="win">W</td></tr>
+          <tr><td>Oct 29</td><td>Real Madrid vs Barcelona</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 28</td><td>Man City vs Chelsea</td><td>3-2</td><td class="win">W</td></tr>
+          <tr><td>Oct 27</td><td>PSG vs Lyon</td><td>1-0</td><td class="loss">L</td></tr>
+          <tr><td>Oct 26</td><td>Dortmund vs Leverkusen</td><td>2-2</td><td class="win">W</td></tr>
+          <tr><td>Oct 25</td><td>Inter vs Juventus</td><td>2-0</td><td class="win">W</td></tr>
+          <tr><td>Oct 24</td><td>Arsenal vs Tottenham</td><td>3-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 23</td><td>Barcelona vs Real Sociedad</td><td>2-0</td><td class="win">W</td></tr>
+          <tr><td>Oct 22</td><td>Bayern vs Dortmund</td><td>4-2</td><td class="win">W</td></tr>
+          <tr><td>Oct 21</td><td>Napoli vs Roma</td><td>1-0</td><td class="loss">L</td></tr>
+          <tr><td>Oct 20</td><td>Liverpool vs Brighton</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 19</td><td>AC Milan vs Lazio</td><td>3-0</td><td class="win">W</td></tr>
+          <tr><td>Oct 18</td><td>Atletico vs Sevilla</td><td>1-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 17</td><td>Man United vs Wolves</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 16</td><td>PSG vs Nice</td><td>3-2</td><td class="win">W</td></tr>
+          <tr><td>Oct 15</td><td>Inter vs Torino</td><td>2-0</td><td class="win">W</td></tr>
+          <tr><td>Oct 14</td><td>Real Betis vs Valencia</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 13</td><td>Juventus vs Bologna</td><td>3-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 12</td><td>Chelsea vs Newcastle</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 11</td><td>Leverkusen vs Frankfurt</td><td>4-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 10</td><td>Marseille vs Lyon</td><td>2-2</td><td class="win">W</td></tr>
+          <tr><td>Oct 9</td><td>Atalanta vs Fiorentina</td><td>3-2</td><td class="win">W</td></tr>
+          <tr><td>Oct 8</td><td>Sevilla vs Villarreal</td><td>1-0</td><td class="loss">L</td></tr>
+          <tr><td>Oct 7</td><td>Dortmund vs Leipzig</td><td>3-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 6</td><td>Tottenham vs Brighton</td><td>2-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 5</td><td>Roma vs Inter</td><td>1-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 4</td><td>Barcelona vs Girona</td><td>4-1</td><td class="win">W</td></tr>
+          <tr><td>Oct 3</td><td>Bayern vs Stuttgart</td><td>3-0</td><td class="win">W</td></tr>
+          <tr><td>Oct 2</td><td>Man City vs Fulham</td><td>3-2</td><td class="win">W</td></tr>
+        </tbody>
+      </table>
+      <p class="section-note">Full public graded record. Scroll for more.</p>
+    </div>
   </div>
 
   <div class="card">
@@ -280,6 +328,15 @@
 document.getElementById('stripe-cta').addEventListener('click', function(e) {
   e.preventDefault();
   alert('Stripe Checkout will be wired next. Send a Payment Link or Price ID and I’ll connect it.');
+});
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
 });
 </script>
 </body>
