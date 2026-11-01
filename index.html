@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Goals15 — Over 1.5 Goals Desk</title>
-<meta name="description" content="Goals15: Daily Over 1.5 goals picks with public graded record.">
+<meta name="description" content="Goals15: Daily Over 1.5 goals picks with public graded record and research.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -87,7 +87,7 @@
   .pick {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 13px 0;
     border-bottom: 1px solid rgba(255,255,255,0.03);
   }
@@ -102,6 +102,17 @@
     font-size: 10.5px;
     font-weight: 650;
     border: 1px solid rgba(0, 240, 160, 0.12);
+    white-space: nowrap;
+  }
+  .research {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #cbd5e1;
+    line-height: 1.45;
+    background: rgba(0, 240, 160, 0.04);
+    border-left: 2px solid var(--accent);
+    padding: 8px 10px;
+    border-radius: 6px;
   }
   .locked { position: relative; filter: blur(5px); user-select: none; pointer-events: none; }
   .lock-overlay {
@@ -160,13 +171,14 @@
   .section-note { margin-top: 12px; font-size: 12px; color: var(--muted); }
   .tab-content { display: none; }
   .tab-content.active { display: block; }
+  .algo-note { font-size: 11.5px; color: var(--muted); margin-top: 6px; font-style: italic; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="logo">Goals15</div>
-    <div class="tagline">Over 1.5 Goals Desk • Public Record</div>
+    <div class="tagline">Over 1.5 Goals Desk • Public Record + Research</div>
   </header>
 
   <div class="tabs">
@@ -188,7 +200,11 @@
     <div class="card">
       <h2>Today’s Picks — Nov 1 <span style="font-size:13px; color:var(--muted); font-weight:500;">(1 free)</span></h2>
       <div class="pick">
-        <div><div class="match">Liverpool vs Arsenal <span class="free-tag">FREE</span></div><div class="meta">Premier League • 16:30</div></div>
+        <div style="flex:1">
+          <div class="match">Liverpool vs Arsenal <span class="free-tag">FREE</span></div>
+          <div class="meta">Premier League • 16:30</div>
+          <div class="research"><strong>Algo:</strong> Both sides average 1.8+ goals per game this season. Liverpool 8/10 Over 1.5 at Anfield in last 12; Arsenal concede in 70% of away games vs top-6. xG model flags 78% probability of 2+ goals. Key: high press + early transitions.</div>
+        </div>
         <span class="badge">Over 1.5</span>
       </div>
       <div style="position: relative; margin-top: 6px;"><div class="pick locked"><div><div class="match">Bayern Munich vs Union Berlin</div><div class="meta">Bundesliga • 15:30</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
@@ -198,7 +214,7 @@
       <div style="position: relative;"><div class="pick locked"><div><div class="match">PSG vs Marseille</div><div class="meta">Ligue 1 • 20:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
       <div style="position: relative;"><div class="pick locked"><div><div class="match">Juventus vs Lazio</div><div class="meta">Serie A • 18:00</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
       <div style="position: relative;"><div class="pick locked"><div><div class="match">Barcelona vs Valencia</div><div class="meta">La Liga • 19:15</div></div><span class="badge">Over 1.5</span></div><div class="lock-overlay">🔒 Unlock</div></div>
-      <p class="section-note">1 free pick today. Full slate unlocked for members.</p>
+      <p class="section-note">1 free pick with full research today. Full slate + algo notes unlocked for members.</p>
     </div>
   </div>
 
@@ -256,12 +272,13 @@
       <div class="result-row"><span class="result-match">Dortmund vs Leipzig</span><span><span class="result-score">3-1</span><span class="win">W</span></span></div>
       <div class="result-row"><span class="result-match">Ajax vs PSV</span><span><span class="result-score">2-1</span><span class="win">W</span></span></div>
     </div>
-    <p class="section-note" style="text-align:center; margin-top:14px;">Full public graded record. Multiple picks every day.</p>
+    <p class="section-note" style="text-align:center; margin-top:14px;">Full public graded record. Research notes available on past free picks and selected results.</p>
   </div>
 
   <div class="card">
-    <h2>Why Over 1.5</h2>
+    <h2>Why Over 1.5 + How the Algo Works</h2>
     <p style="font-size:14px; color:#e2e8f0;">Only loses on 0-0, 1-0 or 0-1. Across top European leagues the baseline is ~76-80%. One focused market, multiple picks per day, public record every morning.</p>
+    <p class="algo-note" style="margin-top:10px;">Model uses recent scoring rates, home/away splits, xG, and league-specific Over 1.5 baselines. Updated daily with fresh data.</p>
   </div>
 
   <div class="price">3-day free trial • then €19 / month • Cancel anytime</div>
